@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+
+const principles = [
+  ['Working software over slideware', 'Every engagement aims at something running in production, not a deck.'],
+  ['Simplicity over complexity', 'The best system is the smallest one that solves the problem. We resist bloat.'],
+  ['Honest about AI', 'We use AI where it genuinely helps and say so plainly where it does not.'],
+  ['Ship fast, then improve', 'Get a real result in front of real users early, then iterate with evidence.'],
+];
+---
+
+<Base title="About — Righteous AI" description="Righteous AI is a focused studio building pragmatic, production-grade AI software.">
+  <section class="section">
+    <div class="container" style="max-width: 760px;">
+      <span class="eyebrow">About</span>
+      <h1>A studio for pragmatic AI.</h1>
+      <p class="lead">
+        Righteous AI is an independent studio that helps teams build and ship
+        AI-powered software without the hype tax. We pair deep, hands-on
+        engineering with a healthy skepticism about where AI actually adds value.
+      </p>
+
+      <p>
+        The work spans the full stack — strategy, design, web and backend
+        development, data, and infrastructure — but the throughline is always the
+        same: deliver something real, keep it simple, and make it easy to
+        maintain. We'd rather ship a small thing that works than a large thing
+        that impresses in a demo and breaks in production.
+      </p>
+
+      <h2 style="margin-top: 2.5rem;">How we work</h2>
+      <div class="grid grid--2" style="margin-top: 1.25rem;">
+        {principles.map(([title, body]) => (
+          <article class="card">
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div style="margin-top: 2.5rem;">
+        <a class="btn btn--primary" href="/contact">Work with us</a>
+      </div>
+    </div>
+  </section>
+</Base>

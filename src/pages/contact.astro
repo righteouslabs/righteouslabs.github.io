@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+
+// This is a static site (GitHub Pages), so there is no server to receive a form
+// POST. Two easy options to make the form below actually send:
+//   1. Sign up at https://formspree.io (free tier), create a form, and paste the
+//      endpoint into FORM_ENDPOINT below.
+//   2. Delete the form and rely on the email button — it always works.
+const FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxxxx'
+const EMAIL = 'rohit.mistry@righteous.ai';
+---
+
+<Base title="Contact — Righteous AI" description="Get in touch with Righteous AI.">
+  <section class="section">
+    <div class="container center" style="margin-bottom: 2rem;">
+      <span class="eyebrow">Contact</span>
+      <h1>Let's talk.</h1>
+      <p class="lead">
+        Tell us a bit about what you're working on. We read every message and
+        reply personally.
+      </p>
+      <div style="margin-top: 1.25rem;">
+        <a class="btn btn--primary" href={`mailto:${EMAIL}`}>Email {EMAIL}</a>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <form
+        action={FORM_ENDPOINT || `mailto:${EMAIL}`}
+        method={FORM_ENDPOINT ? 'POST' : 'GET'}
+        enctype={FORM_ENDPOINT ? undefined : 'text/plain'}
+      >
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="field">
+          <span>What can we help with?</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn btn--primary" type="submit" style="width: 100%;">
+          Send message
+        </button>
+      </form>
+    </div>
+  </section>
+</Base>

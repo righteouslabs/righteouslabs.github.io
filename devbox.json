@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.4/.schema/devbox.schema.json",
+  "packages": [
+    "nodejs@22",
+    "git@latest",
+    "tmux@latest",
+    "tmuxinator@latest",
+    "neovim@latest",
+    "ripgrep@latest",
+    "fzf@latest",
+    "fd@latest",
+    "lazygit@latest"
+  ],
+  "include": [],
+  "description": "DevBox for the righteous.ai website (Astro static site).",
+  "env": {
+    "PROMPT_COMMAND": "echo -e \"\\nCurrent Directory: $(pwd)\"",
+    "PS1": "📦 devbox> "
+  },
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to righteous.ai! Run `devbox run npm-install` then `devbox run dev`.'"
+    ],
+    "scripts": {
+      "npm-install": [
+        "npm install"
+      ],
+      "tmux": [
+        "tmuxinator start righteouslabs-github-io -p $PWD/.tmuxinator.yml"
+      ],
+      "tmux:stop": [
+        "tmuxinator stop righteouslabs-github-io -p $PWD/.tmuxinator.yml"
+      ],
+      "dev": [
+        "npm run dev -- --host=0.0.0.0"
+      ],
+      "build": [
+        "npm run build"
+      ]
+    }
+  }
+}

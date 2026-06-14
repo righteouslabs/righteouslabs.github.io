@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    title: 'AI Strategy',
+    body: 'Cut through the hype. We help you find the handful of use cases where AI actually moves the needle — and the ones to skip.',
+    icon: '◎',
+  },
+  {
+    title: 'Build & Ship',
+    body: 'Working software over slideware. We design, build, and deploy production AI features on top of the best available models.',
+    icon: '⚡',
+  },
+  {
+    title: 'Automation',
+    body: 'Quietly remove the repetitive work. Pragmatic automation and agents wired into the tools your team already uses.',
+    icon: '⟲',
+  },
+];
+---
+
+<Base title="Righteous AI — Pragmatic AI, shipped">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Righteous AI</span>
+      <h1>Pragmatic AI that actually ships.</h1>
+      <p class="lead">
+        We help teams turn AI from a buzzword into working software — practical
+        strategy, real products, and automation that earns its keep.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn--primary" href="/contact">Start a conversation</a>
+        <a class="btn btn--ghost" href="/about">How we work →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container">
+      <div class="center" style="margin-bottom: 2.5rem;">
+        <h2>What we do</h2>
+        <p class="lead">Small, focused engagements that produce something real.</p>
+      </div>
+      <div class="grid grid--3">
+        {services.map((s) => (
+          <article class="card">
+            <div class="ic" aria-hidden="true">{s.icon}</div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="section section--alt">
+    <div class="container center">
+      <h2>Have a problem worth solving?</h2>
+      <p class="lead">
+        Tell us what you're working on. If AI is the right tool, we'll show you
+        the shortest path to a working result. If it isn't, we'll tell you that too.
+      </p>
+      <div style="margin-top: 1.5rem;">
+        <a class="btn btn--primary" href="/contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</Base>

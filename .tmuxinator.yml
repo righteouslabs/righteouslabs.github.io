@@ -1,0 +1,33 @@
+# .tmuxinator.yml - Tmuxinator configuration for the righteous.ai website
+name: righteouslabs-github-io
+root: <%= ENV["PWD"] || "." %>
+
+# Load .env if present
+dotenv: true
+
+# Use a project-specific socket so this project gets its own tmux server / $PATH
+socket_name: righteouslabs-github-io
+
+# Pass our project-local tmux config
+tmux_options: -f <%= ENV["PWD"] %>/.tmux.conf
+
+# Window selected on startup
+startup_window: claude
+
+windows:
+  - claude:
+      panes:
+        - |
+          echo "You can run Claude with: claude --continue"
+  - lazygit:
+      panes:
+        - lazygit
+  - nvim:
+      panes:
+        - nvim .
+  - terminal:
+      panes:
+        - # Empty pane for general terminal use
+  - npm-dev:
+      panes:
+        - npm run dev -- --host=0.0.0.0

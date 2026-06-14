@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title="Blog — Righteous AI" description="Notes on pragmatic AI, shipping software, and building a lean studio.">
+  <section class="section">
+    <div class="container" style="max-width: 760px;">
+      <span class="eyebrow">Blog</span>
+      <h1>Notes from the workshop.</h1>
+      <p class="lead" style="margin-bottom: 2rem;">
+        Thoughts on pragmatic AI, shipping software, and running a lean studio.
+      </p>
+
+      {posts.length === 0 ? (
+        <p>No posts yet — check back soon.</p>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li class="post-item">
+              <p class="post-meta">{fmt(post.data.pubDate)}</p>
+              <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+              <p>{post.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</Base>
