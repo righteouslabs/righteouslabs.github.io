@@ -27,7 +27,12 @@ jobs:
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
-        # Defaults: path "." , node 22, package manager auto-detected.
+        with:
+          # Pinned explicitly: withastro/action@v3 defaults to Node 20, but
+          # astro >=7 requires Node >=22.12.0. Bump this when astro's
+          # `engines.node` outgrows it.
+          node-version: 24
+        # Path defaults to "."; package manager is auto-detected.
         # The built site is uploaded as the Pages artifact automatically.
 
   deploy:
